@@ -1,0 +1,1421 @@
+#include <bits/stdc++.h>
+#define int long long int
+using namespace std;
+
+void sum();
+void sub();
+void mult();
+void div();
+void trigonometry();
+void temp();
+void drg();
+void pr();
+void pow();
+void summat();
+void submat();
+void mulmat();
+void transmat();
+void mod();
+void sqrt();
+void com();
+void simop();
+void matop();
+void mode();
+void fibonacci();
+void fib(int a, int b, int c, int p);
+void base();
+void btod();
+void dtob();
+void otod();
+void dtoo();
+void dtoh();
+void htod();
+void btoh();
+void btoo();
+void otob();
+void otoh();
+void htoo();
+void htob();
+
+int32_t main()
+{  cout<<endl;
+cout<<endl;
+cout<<endl;
+cout<<endl;
+    cout<<"\tWELCOME                                                                                                       Created by NI MARUF"<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout<<endl;
+    mode();
+    return 0;
+}
+
+void sum()
+{
+    int x, l = 0;
+    cout << "Enter How much number you want to add: " << endl;
+    cin >> x;
+    double su[x];
+    cout << "Now,Enter the numbers: " << endl;
+    for (int i = 0; i < x; i++)
+    {
+        cin >> su[i];
+        l += su[i];
+    }
+    cout << "The sum total of given number is = " << l << endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        sum();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void sub()
+{
+    int x, l;
+    cout << "Enter the First number: " << endl;
+    cin >> x;
+    cout << "Enter the last number: " << endl;
+    cin >> l;
+    cout << "The Result is: " << x - l << endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        sub();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void mult()
+{
+    int x, l = 1;
+
+    cout << "Enter how much number you want to multiply: " << endl;
+    cin >> x;
+    int ar[x];
+    cout << "Now,Enter the numbers: " << endl;
+    for (int i = 0; i < x; i++)
+    {
+        cin >> ar[i];
+        l *= ar[i];
+    }
+    cout << "The result is : " << l << endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mult();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void div()
+{
+    int x, l;
+    cout << "Enter the First number: " << endl;
+    cin >> x;
+    cout << "Enter the last number: " << endl;
+    cin >> l;
+    cout << "The Result is: " << x / l << endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        div();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void trigonometry()
+{
+    printf("Choose operator: \n");
+    printf("\t1.Sine\n");
+    printf("\t2.Cosine\n");
+    printf("\t3.Tangent\n");
+    printf("\t4.ArcSine\n");
+    printf("\t5.ArcCosine\n");
+    printf("\t6.ArcTangent\n");
+    int ope;
+    cin>>ope;
+    double n, b;
+    printf("Enter the Degree or X: ");
+    cin>>n;
+    b = n * (3.141593 / 180);
+    switch (ope)
+    {
+    case 1:
+        printf("\tSine(degree) = %.3lf\n", sin(b));
+        break;
+    case 2:
+        printf("\tCos(degree) = %.3lf\n", cos(b));
+        break;
+    case 3:
+        printf("\tTan(degree) = %.3lf\n", tan(b));
+        break;
+    case 4:
+        printf("\tArcSin(degree) = %.3lf\n", asin(b));
+        break;
+    case 5:
+        printf("\tArcCosine(degree) = %.3lf\n", acos(b));
+        break;
+    case 6:
+        printf("\tArcTan(degree) = %.3lf\n", atan(b));
+        break;
+    }
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        trigonometry();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void temp()
+{
+    printf("Choose Operation: \n");
+    printf("\t1.Celsius to Fahrenheit\n");
+    printf("\t2.Fahrenheit to Celsius\n");
+    printf("\t3.Celsius to Kelvin\n");
+    printf("\t4.Kelvin to Celsius \n");
+    printf("\t5.Kelvin to Fahrenheit\n");
+    printf("\t6.Fahrenheit to Kelvin\n");
+
+    int l;
+   cin>>l;
+    printf("\t Enter the Temperature: \n");
+    double t, fin, nin = 1.8, fiv = 0.56;
+    cin>>t;
+
+    if (l == 1)
+    {
+        fin = (nin * t) + 32.0;
+        printf("\tThe Converted temperature will be = %.3lf\n", fin);
+    }
+    else if (l == 2)
+    {
+        fin = (t - 32.0) * fiv;
+        printf("\tThe Converted temperature will be = %.3lf\n", fin);
+    }
+    else if (l == 3)
+    {
+        fin = t + 273.0;
+        printf("\tThe Converted temperature will be = %.3lf\n", fin);
+    }
+    else if (l == 4)
+    {
+        fin = t - 273;
+        printf("\tThe Converted temperature will be = %.3lf\n", fin);
+    }
+    else if (l == 5)
+    {
+        fin = ((t - 273) * nin) + 32.0;
+        printf("\tThe Converted temperature will be = %.3lf\n", fin);
+    }
+    else if (l == 6)
+    {
+        fin = (fiv * (t - 32)) + 273;
+        printf("\tThe Converted temperature will be = %.3lf\n", fin);
+    }
+    else
+    {
+        printf("\tWrong Operation!!\n");
+    }
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        temp();
+    }
+    else
+    {
+        return;
+    }
+}
+void drg()
+{
+    printf("\t1.Degree to Radian \n");
+    printf("\t2.Radian to Degree \n");
+    int f;
+    cin>>f;
+    if (f == 1)
+    {
+        printf("Enter the value: \n");
+        double q;
+       cin>>q;
+        double result = q * (3.141593 / 180);
+        printf("The result in Radian is = %.3lf\n", result);
+    }
+    else
+    {
+        printf("Enter the value: \n");
+        double q;
+        cin>>q;
+        double result = q * (180 / 3.141593);
+        printf("The result in Degree is = %.3lf\n", result);
+    }
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        drg();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void pr()
+{
+    printf("\t1.Polar to Rectangular\n");
+    printf("\t2.Rectangular to Polar\n");
+    int i;
+    double pi = 3.141593 / 180.0;
+    cin>>i;
+    if (i == 1)
+    {
+        printf("Enter the value of x and y: \n");
+        double o, pl, rec, deg, k, l;
+        cin>>o>>pl;
+        k = o * o;
+        l = pl * pl;
+        rec = sqrt(k + l);
+        if (o < 0 && pl < o)
+        {
+            deg = atan((pl / o) * (1 / pi));
+        }
+        else if (o < 0 || pl < 0)
+        {
+            deg = atan((pl / o) * (-1) * (1 / pi));
+        }
+
+        else
+        {
+            deg = atan((pl / o) * (1 / pi));
+        }
+        printf("\t r=%.3lf\n", rec);
+        printf("\t Theta =%.3lf\n", deg);
+    }
+    else if (i == 2)
+    {
+        printf("Enter the value of r and theta: \n");
+        double o, pl, x, y, k, l;
+       cin>>o>>pl;
+        k = cos(pl * pi);
+        l = sin(pl * pi);
+        x = o * k;
+        y = o * l;
+        printf("\tx=%.3lf\n", x);
+        printf("\ty=%.3lf\n", y);
+    }
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        pr();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void pow()
+{
+    double x, y;
+    printf("Enter the base value: \n");
+    cin>>x;
+    printf("Enter the power value: \n");
+    cin>>y;
+    double result = pow(x, y);
+    printf("The value is = %.3lf after powered up\n", result);
+
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        pow();
+    }
+    else
+    {
+        return;
+    }
+}
+void sqrt()
+{
+    double x;
+    printf("Enter the  value: \n");
+    cin>>x;
+    double result = sqrt(x);
+    printf("The result is = %.3lf\n", result);
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        sqrt();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void summat()
+{
+    int x, y, k, l;
+    printf("Enter the Dimension of First Matrix: \n");
+    cin>>x>>y;
+    printf("Enter the Dimension of Second Matrix: \n");
+    cin>>k>>l;
+    if (x != k || y != l)
+    {
+        printf("Dimension Error\n");
+    }
+    else
+    {
+        int mat1[x][y];
+        printf("Enter the element of First Matrix: \n");
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                scanf("%d", &mat1[i][j]);
+            }
+        }
+        printf("The First Matrix is: \n");
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                printf("%d", mat1[i][j]);
+            }
+            printf("\n");
+        }
+
+        int mat2[k][l];
+        printf("Enter the element of Second Matrix: \n");
+        for (int i = 0; i < k; i++)
+        {
+            for (int j = 0; j < l; j++)
+            {
+                scanf("%d", &mat2[i][j]);
+            }
+        }
+        printf("The Second Matrix is: \n");
+        for (int i = 0; i < k; i++)
+        {
+            for (int j = 0; j < l; j++)
+            {
+                printf("%d", mat2[i][j]);
+            }
+            printf("\n");
+        }
+
+        int summat[x][y];
+        printf("The result matrix is: \n");
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                summat[i][j] = mat1[i][j] + mat2[i][j];
+                printf("\t%d", summat[i][j]);
+            }
+            printf("\n");
+        }
+    }
+
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        summat();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void submat()
+{
+    int x, y, k, l;
+    printf("Enter the Dimension of First Matrix: \n");
+    scanf("%d%d", &x, &y);
+    printf("Enter the Dimension of Second Matrix: \n");
+    scanf("%d%d", &k, &l);
+    if (x != k || y != l)
+    {
+        printf("Dimension Error\n");
+    }
+    else
+    {
+        int mat1[x][y];
+        printf("Enter the element of First Matrix: \n");
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                scanf("%d", &mat1[i][j]);
+            }
+        }
+        printf("The First Matrix is: \n");
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                printf("%d", mat1[i][j]);
+            }
+            printf("\n");
+        }
+
+        int mat2[k][l];
+        printf("Enter the element of Second Matrix: \n");
+        for (int i = 0; i < k; i++)
+        {
+            for (int j = 0; j < l; j++)
+            {
+                scanf("%d", &mat2[i][j]);
+            }
+        }
+        printf("The Second Matrix is: \n");
+        for (int i = 0; i < k; i++)
+        {
+            for (int j = 0; j < l; j++)
+            {
+                printf("%d", mat2[i][j]);
+            }
+            printf("\n");
+        }
+
+        int submat[x][y];
+        printf("The result matrix is: \n");
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                submat[i][j] = mat1[i][j] - mat2[i][j];
+                printf("\t%d", submat[i][j]);
+            }
+            printf("\n");
+        }
+    }
+
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        submat();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void mulmat()
+{
+    int x, y, k, l;
+    printf("Enter the Dimension of First Matrix: \n");
+    scanf("%d%d", &x, &y);
+    printf("Enter the Dimension of Second Matrix: \n");
+    scanf("%d%d", &k, &l);
+    if (x != k || y != l)
+    {
+        printf("Dimension Error\n");
+    }
+    else
+    {
+        int mat1[x][y];
+        printf("Enter the element of First Matrix: \n");
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                scanf("%d", &mat1[i][j]);
+            }
+        }
+        printf("The First Matrix is: \n");
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                printf("%d", mat1[i][j]);
+            }
+            printf("\n");
+        }
+
+        int mat2[k][l];
+        printf("Enter the element of Second Matrix: \n");
+        for (int i = 0; i < k; i++)
+        {
+            for (int j = 0; j < l; j++)
+            {
+                scanf("%d", &mat2[i][j]);
+            }
+        }
+        printf("The Second Matrix is: \n");
+        for (int i = 0; i < k; i++)
+        {
+            for (int j = 0; j < l; j++)
+            {
+                printf("%d", mat2[i][j]);
+            }
+            printf("\n");
+        }
+
+        int submat[x][y];
+        printf("The result matrix is: \n");
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                submat[i][j] = mat1[i][j] - mat2[i][j];
+                printf("\t%d", submat[i][j]);
+            }
+            printf("\n");
+        }
+    }
+
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mulmat();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void transmat()
+{
+    int x, y, k, l;
+    printf("Enter the Dimension of The Matrix: \n");
+    cin>>x>>y;
+
+    int mat[x][y];
+    printf("Enter the element of The Matrix: \n");
+    for (int i = 0; i < x; i++)
+    {
+        for (int j = 0; j < y; j++)
+        {
+            scanf("%d", &mat[i][j]);
+        }
+    }
+    printf("The Matrix is: \n");
+    for (int i = 0; i < x; i++)
+    {
+        for (int j = 0; j < y; j++)
+        {
+            printf("\t%d", mat[i][j]);
+        }
+        printf("\n");
+    }
+    int tranmat[y][x];
+
+    printf("The result matrix is: \n");
+    for (int i = 0; i < y; i++)
+    {
+
+        for (int j = 0; j < x; j++)
+        {
+            tranmat[i][j] = mat[j][i];
+            printf("\t%d", tranmat[i][j]);
+        }
+        printf("\n");
+    }
+
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        transmat();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void mod()
+{
+    int a, b;
+    cout << "Enter the first number: " << endl;
+    cin >> a;
+    cout << "Enter the second number: " << endl;
+    cin >> b;
+    cout << "The Modulus of this number is: " << a % b << endl;
+
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mod();
+    }
+    else
+    {
+        return;
+    }
+}
+void com()
+{
+    cout << "Choose Operation: " << endl;
+    cout << "\t1.Complex to Polar: " << endl;
+    cout << "\t2.Polar to Complex: " << endl;
+    int a;
+    double pi = 3.141593 / 180.0;
+    cin >> a;
+    if (a == 1)
+    {
+        printf("Enter the value of x and y: \n");
+        double o, p, rec, deg, k, l;
+        scanf("%lf%lf", &o, &p);
+        k = o * o;
+        l = p * p;
+        rec = sqrt(k + l);
+        if (o < 0 && p < o)
+        {
+            deg = atan((p / o) * (1 / pi));
+        }
+        else if (o < 0 || p < 0)
+        {
+            deg = atan((p / o) * (-1) * (1 / pi));
+        }
+
+        else
+        {
+            deg = atan((p / o) * (1 / pi));
+        }
+        printf("\t r=%.3lf\n", rec);
+        printf("\t Theta =%.3lf\n", deg);
+    }
+    else if (a == 2)
+    {
+        printf("Enter the value of r and theta: \n");
+        double o, p, x, y, k, l;
+        scanf("%lf%lf", &o, &p);
+        k = cos(p * pi);
+        l = sin(p * pi);
+        x = o * k;
+        y = o * l;
+        printf("\tx=%.3lf\n", x);
+        printf("\ty=%.3lf\n", y);
+        cout << "The shape will be: " << x << "(+)" << 'i' << y << endl;
+    }
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+}
+
+void simop()
+{
+    printf("Choose The Level of Calculation: \n");
+    printf("\t1.Simple Calculation \n");
+    printf("\t2.Special Calculation \n");
+    int cata;
+    cin>>cata;
+    if (cata == 1)
+    {
+        double a, b;
+        printf("Choose the operator: \n");
+        printf("\t1.Addition\n");
+        printf("\t2.Subtraction\n");
+        printf("\t3.Multiplication\n");
+        printf("\t4.Division\n");
+        printf("\t5.Modulus\n");
+        int opera;
+        cin>>opera;
+
+        switch (opera)
+        {
+        case 1:
+            sum();
+            break;
+        case 2:
+            sub();
+            break;
+        case 3:
+            mult();
+            break;
+        case 4:
+            div();
+            break;
+        case 5:
+            mod();
+            break;
+        }
+    }
+
+    else
+    {
+        printf("Choose the Catagory: \n");
+        printf("\t1.Power Value \n");
+        printf("\t2.Square Root Value \n");
+        printf("\t3.Degree-Radian \n");
+        printf("\t4.Polar-Rectangular\n");
+        printf("\t5.Trigonometry\n");
+        printf("\t6.Temperature\n");
+        printf("\t7.Fibonacci \n");
+        int lee;
+        cin>>lee;
+        if (lee == 1)
+        {
+            pow();
+        }
+        else if (lee == 2)
+        {
+            sqrt();
+        }
+        else if (lee == 3)
+        {
+            drg();
+        }
+        else if (lee == 4)
+        {
+            pr();
+        }
+        else if (lee == 5)
+        {
+            trigonometry();
+        }
+        else if (lee == 6)
+        {
+            temp();
+        }
+        else if (lee == 7)
+        {
+            fibonacci();
+        }
+    }
+    
+}
+void matop()
+{
+    printf("Choose Operation: \n");
+    printf("\t1.Summation\n");
+    printf("\t2.Subtraction\n");
+    printf("\t3.Multiplication\n");
+    printf("\t4.Transpose Matrix\n");
+
+    int ser;
+    scanf("%d", &ser);
+
+    if (ser == 1)
+    {
+        summat();
+    }
+
+    else if (ser == 2)
+    {
+        submat();
+    }
+
+    else if (ser == 3)
+    {
+        mulmat();
+    }
+
+    else if (ser = 4)
+    {
+        transmat();
+    }
+    else
+    {
+        printf("\t Invalid Serial !!\n");
+    }
+
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        matop();
+    }
+    else
+    {
+        return;
+    }
+}
+void mode()
+{
+    printf("Choose the serial of the MODE that you want: \n");
+    printf("\t1.Computation \n");
+    printf("\t2.Complex \n");
+    printf("\t3.Base-N \n");
+    printf("\t4.Matrix \n");
+    int serial;
+    cin>>serial;
+    if (serial == 1)
+    {
+        simop();
+    }
+
+    else if (serial == 2)
+    {
+        com();
+    }
+
+    else if (serial == 4)
+    {
+
+        matop();
+    }
+    else if(serial==3){
+        base();
+    }
+    
+    
+}
+void fibonacci()
+{
+
+    int x;
+    cout << "Enter the Number: " << endl;
+    scanf("%d", &x);
+    if (x == 0)
+    {
+        printf("0\n");
+    }
+    if (x == 1)
+    {
+        printf("0 \n");
+    }
+    else if (x == 2)
+    {
+        printf("0 1 ");
+    }
+    else
+    {
+        printf("0 1 ");
+        fib(0, 1, 2, x);
+    }
+}
+void fib(int a, int b, int c, int p)
+{
+    if (c >= p)
+        return;
+    int temp = a;
+    a = b;
+    b = a + temp;
+    printf("%d ", b);
+    fib(a, b, c + 1, p);
+    cout << endl;
+}
+void base(){
+    printf("Choose the operation that you want: \n");
+    printf("\t1.Decimal to Binary\n");
+    printf("\t2.Decimal to Octal  \n");
+    printf("\t3.Decimal to Hexadecimal \n");
+    printf("\t4.Binary  to Decimal \n");
+    printf("\t5.Binary to Octal\n");
+    printf("\t6.Binary to Hexadecimal\n");
+    printf("\t7.Hexadecimal to Decimal\n");
+    printf("\t8.Hexadecimal to Binary \n");
+    printf("\t9.Hexadecimal to Octal \n");
+    printf("\t10.Octal to Decimal\n");
+    printf("\t11.Octal to Binary\n");
+    printf("\t12.Octal to Hexadecimal\n");
+    
+    int ba;
+    cin>>ba;
+    if(ba==1){
+        dtob();
+    }
+    else if(ba==2){
+        dtoo();
+    }
+    else if(ba==3){
+       dtoh();
+    }
+    else if(ba==4){
+      btod();
+    }
+    else if(ba==5){
+       btoo();
+    }
+    else if(ba==6){
+        btoh();
+    }
+    else if(ba==7){
+         htod();
+    }
+    else if(ba==8){
+         htob();
+    }
+    else if(ba==9){
+          htoo();
+    }
+    else if(ba==10){
+          otod();
+    }
+    else if(ba==11){
+            otob();
+    }
+    else if(ba==12){
+            otoh();
+    }
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+}
+void btod(){
+    cout<<"Enter the Number"<<endl;
+        string s;
+    cin>>s;
+    
+    int j=(s.size()-1),sum=0;
+    for(int i=0;i<(s.size());i++){
+         sum+=((s[i]-'0')*pow(2,j));
+         j--;
+    }
+    cout<<sum<<endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+
+}
+void dtob(){
+  
+  cout<<"Enter the Number"<<endl;
+  int a;
+    cin>>a;
+    vector<int>v;
+    for(int i=a;i>0;i/=2){
+        v.push_back(i%2); 
+    }
+    cout<<"The result is:"<<endl;
+    for(int i=v.size()-1;i>=0;i--){
+        cout<<v[i];
+    }
+    cout<<endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+    
+
+}
+void otod(){
+   string s;
+   cout<<"Enter the Number"<<endl;
+  cin>>s;
+int j=(s.size()-1),sum=0;
+    for(int i=0;i<(s.size());i++){
+         sum+=((s[i]-'0')*pow(8,j));
+         j--;
+    }
+    cout<<"The result is:"<<sum<<endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+}
+void dtoo(){
+    cout<<"Enter the Number"<<endl;
+     int a;
+    cin>>a;
+    vector<int>v;
+    for(int i=a;i>0;i/=8){
+        v.push_back(i%8); 
+    }
+    cout<<"The result is:"<<endl;
+    for(int i=v.size()-1;i>=0;i--){
+        cout<<v[i];
+    }
+    cout<<endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+
+}
+void dtoh(){
+    
+    cout<<"Enter the Number"<<endl;
+    int po;
+    cin>>po;
+    vector<char>v;
+    for(int i=po;i>0;i/=16){
+       int k=i%16;
+       char l=k+'0';
+        if(k==10)v.push_back('A');
+        else if(k==11)v.push_back('B');
+        else if(k==12)v.push_back('C');
+        else if(k==13)v.push_back('D');
+        else if(k==14)v.push_back('E');
+        else if(k==15)v.push_back('F');
+       else { 
+            v.push_back(l);}   
+    }
+    cout<<"The result is:"<<endl;
+    for(int i=v.size()-1;i>=0;i--){
+        cout<<v[i];
+    }
+    cout<<endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+}
+void htod(){
+    cout<<"Enter the Number"<<endl;
+    string s;
+cin>>s;
+int j=(s.size()-1),sum=0;
+    for(int i=0;i<(s.size());i++){
+        char f=s[j];
+        int l;
+        if(f=='A')l=10;
+        else if(f=='B')l=11;
+        else if(f=='C')l=12;
+        else if(f=='D')l=13;
+        else if(f=='E')l=14;
+        else if(f=='F')l=15;
+        else {
+            l=f-'0';
+        }
+         sum+=((l)*pow(16,i));
+         j--;
+    }
+    cout<<"The result is:"<<endl;
+    cout<<sum<<endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+}
+void htob(){
+    cout<<"Enter the Number"<<endl;
+   string s;
+cin>>s;
+int j=(s.size()-1),sum=0;
+    for(int i=0;i<(s.size());i++){
+        char f=s[j];
+        int l;
+        if(f=='A')l=10;
+        else if(f=='B')l=11;
+        else if(f=='C')l=12;
+        else if(f=='D')l=13;
+        else if(f=='E')l=14;
+        else if(f=='F')l=15;
+        else {
+            l=f-'0';
+        }
+         sum+=((l)*pow(16,i));
+         j--;
+    }
+    int a=sum;
+    
+    vector<int>v;
+    for(int i=a;i>0;i/=2){
+        v.push_back(i%2); 
+    }
+    cout<<"The result is:"<<endl;
+    for(int i=v.size()-1;i>=0;i--){
+        cout<<v[i];
+    }
+    cout<<endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+}
+void htoo(){
+    cout<<"Enter the Number"<<endl;
+    string s;
+cin>>s;
+int j=(s.size()-1),sum=0;
+    for(int i=0;i<(s.size());i++){
+        char f=s[j];
+        int l;
+        if(f=='A')l=10;
+        else if(f=='B')l=11;
+        else if(f=='C')l=12;
+        else if(f=='D')l=13;
+        else if(f=='E')l=14;
+        else if(f=='F')l=15;
+        else {
+            l=f-'0';
+        }
+        sum+=((l)*pow(16,i));
+        j--;
+    }
+     int a=sum;
+   
+    vector<int>v;
+    for(int i=a;i>0;i/=8){
+        v.push_back(i%8); 
+    }
+    cout<<"The result is:"<<endl;
+    for(int i=v.size()-1;i>=0;i--){
+        cout<<v[i];
+    }
+    cout<<endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+
+}
+void btoo(){
+    cout<<"Enter the Number"<<endl;
+    string s;
+    cin>>s;
+    
+    int j=(s.size()-1),sum=0;
+    for(int i=0;i<(s.size());i++){
+        sum+=((s[i]-'0')*pow(2,j));
+        j--;
+    }
+    
+    int a=sum;
+    
+    vector<int>v;
+    for(int i=a;i>0;i/=8){
+        v.push_back(i%8); 
+    }
+    cout<<"The result is:"<<endl;
+    for(int i=v.size()-1;i>=0;i--){
+        cout<<v[i];
+    }
+    cout<<endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+
+}
+void btoh(){
+    cout<<"Enter the Number"<<endl;
+    string s;
+    cin>>s;
+    
+    int j=(s.size()-1),sum=0;
+    for(int i=0;i<(s.size());i++){
+        sum+=((s[i]-'0')*pow(2,j));
+        j--;
+    }
+    
+     int pin=sum;
+    
+    vector<char>v;
+    for(int i=pin;i>0;i/=16){
+       int k=i%16;
+       char l=k+'0';
+        if(k==10)v.push_back('A');
+        else if(k==11)v.push_back('B');
+        else if(k==12)v.push_back('C');
+        else if(k==13)v.push_back('D');
+        else if(k==14)v.push_back('E');
+        else if(k==15)v.push_back('F');
+       else { 
+            v.push_back(l);}   
+    }
+    cout<<"The result is:"<<endl;
+    
+    for(int i=v.size()-1;i>=0;i--){
+        cout<<v[i];
+    }
+    cout<<endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+}
+void otob(){
+    cout<<"Enter the Number"<<endl;
+    string s;
+cin>>s;
+int j=(s.size()-1),sum=0;
+    for(int i=0;i<(s.size());i++){
+        sum+=((s[i]-'0')*pow(8,j));
+        j--;
+    }
+    
+    int a=sum;
+    
+    vector<int>v;
+    for(int i=a;i>0;i/=2){
+        v.push_back(i%2); 
+    }
+    cout<<"The result is:"<<endl;
+    for(int i=v.size()-1;i>=0;i--){
+        cout<<v[i];
+    }
+    cout<<endl;
+     cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+}
+void otoh(){
+    cout<<"Enter the Number"<<endl;
+    string s;
+cin>>s;
+int j=(s.size()-1),sum=0;
+    for(int i=0;i<(s.size());i++){
+         sum+=((s[i]-'0')*pow(8,j));
+         j--;
+    }
+   int pi=sum;
+    
+    vector<char>v;
+    for(int i=pi;i>0;i/=16){
+       int k=i%16;
+       char l=k+'0';
+        if(k==10)v.push_back('A');
+        else if(k==11)v.push_back('B');
+        else if(k==12)v.push_back('C');
+        else if(k==13)v.push_back('D');
+        else if(k==14)v.push_back('E');
+        else if(k==15)v.push_back('F');
+       else { 
+            v.push_back(l);}   
+    }
+    cout<<"The result is:"<<endl;
+    for(int i=v.size()-1;i>=0;i--){
+        cout<<v[i];
+    }
+    cout<<endl;
+    cout << "Press '0' to return: " << endl;
+    int p;
+    cin >> p;
+    if (p == 0)
+    {
+        mode();
+    }
+    else
+    {
+        return;
+    }
+}
