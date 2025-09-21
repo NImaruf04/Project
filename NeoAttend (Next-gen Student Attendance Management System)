@@ -1,0 +1,490 @@
+// اعوذ بالله من الشيطان الرجيم
+//  'بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+ 
+// Date:   2025.05.12
+// Time:   21:22:22
+#include <bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
+#include <ctime>
+using namespace __gnu_pbds;
+using namespace std;
+// template <typename T> using pbds = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>; // for set
+template <typename T> using pbds = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>; // for multiset
+#define int long long
+#define float double
+#define cyes cout<<"YES"<<endl
+#define cno cout<<"NO"<<endl
+#define endl '\n'
+#define NI                       \
+    ios::sync_with_stdio(false);  \
+    cin.tie(NULL);                 \
+    cout.tie(NULL);                 \
+    void solve();
+
+
+
+const string fileadr = "/Users/nimaruf/Downloads/attendence.csv";
+string month;
+int today;
+
+string gmonthname(int m)
+{
+    const string months[] = {"January", "February", "March", "April", "May", "June",
+                             "July", "August", "September", "October", "November", "December"};
+    return months[m - 1];
+}
+
+class student
+{
+public:
+    string name;
+    int rollnum;
+    string attendance[30];
+
+    student(string n, int r) : name(n), rollnum(r)
+    {
+        fill(attendance, attendance + 30, "-");
+    }
+
+    void mark_attendance(int day, const string &status)
+    {
+        if (day >= 1 && day <= 30)
+        {
+            attendance[day - 1] = status;
+        }
+    }
+
+    int present(int updt) const
+    {
+        return count(attendance, attendance + updt, string("P"));
+    }
+};
+
+void sysclr()
+{
+    cout << "\nPress Enter to continue...";
+    cin.ignore();
+    cin.get();
+    system("clear");
+}
+
+void savedata(const vector<student> &students)
+{
+    ofstream file(fileadr, ios::out);
+    if (file.is_open())
+    {
+        file << "Month," << month << endl;
+        file << "roll,name";
+        for (int i = 1; i <= 30; ++i)
+        {
+            file << ",d" << i;
+        }
+        file << endl;
+
+        for (const auto &s : students)
+        {
+            file << s.rollnum << "," << s.name;
+            for (int i = 0; i < 30; i++)
+            {
+                file << "," << s.attendance[i];
+            }
+            file << endl;
+        }
+        file.close();
+        cout << "Data saved successfully!\n";
+    }
+    else
+    {
+        cout << "File could not be opened!\n";
+    }
+    sysclr();
+}
+
+void loaddata(vector<student> &students)
+{
+    ifstream file(fileadr, ios::in);
+    string line;
+    if (file.is_open())
+    {
+        if (!getline(file, line))
+        {
+            return;
+        }
+
+        if (line.substr(0, 6) == "Month,")
+        {
+            month = line.substr(6);
+            getline(file, line);
+        }
+
+        while (getline(file, line))
+        {
+            stringstream ss(line);
+            string roll_str, name;
+            getline(ss, roll_str, ',');
+            getline(ss, name, ',');
+
+            int rollnum = stoi(roll_str);
+            student s(name, rollnum);
+            for (int i = 0; i < 30; i++)
+            {
+                string val;
+                getline(ss, val, ',');
+                s.attendance[i] = val;
+            }
+            students.push_back(s);
+        }
+        file.close();
+    }
+}
+
+void addstudent(vector<student> &students, const string &name, int rollnum)
+{
+    for (const auto &s : students)
+    {
+        if (s.rollnum == rollnum)
+        {
+            cout << "Student with Roll Number already exists!\n";
+            sysclr();
+            return;
+        }
+    }
+    students.emplace_back(name, rollnum);
+    cout << "Student added successfully!\n";
+    sysclr();
+}
+
+void studentdel(vector<student> &students, int rollnum)
+{
+    auto it = find_if(students.begin(), students.end(), [rollnum](const student &s)
+                      { return s.rollnum == rollnum; });
+    if (it != students.end())
+    {
+        students.erase(it);
+        cout << "Student removed successfully!\n";
+    }
+    else
+    {
+        cout << "Student not found!\n";
+    }
+    sysclr();
+}
+
+void deletedata(vector<student> &students)
+{
+    students.clear();
+    ofstream file(fileadr, ios::out | ios::trunc);
+    file.close();
+    cout << "All data cleared successfully!\n";
+    sysclr();
+}
+
+void printattendence(const vector<student> &students)
+{
+    if (students.empty())
+    {
+        cout << "\nNo students found!\n";
+        sysclr();
+        return;
+    }
+
+    vector<student> sortstd = students;
+    sort(sortstd.begin(), sortstd.end(), [](const student &a, const student &b)
+         { return a.rollnum < b.rollnum; });
+
+    const int widthr = 10;
+    const int widthn = 20;
+    const int widthd = 3;
+
+     cout<<"\n================================================================================== ATTENDANCE SHEET ======================================================================================\n";
+
+    cout << "=======================================================================================Month: " << month << "=========================================================================================\n\n";
+
+
+    cout << "| " << left << setw(widthr) << "Roll No"
+         << "| " << setw(widthn) << "Name";
+    for (int i = 1; i <= 30; i++)
+    {
+        cout << "| " << setw(widthd) << i;
+    }
+    cout << " |\n";
+
+    cout << string(widthr + widthn + 30 * (widthd + 2) + 6, '-') << endl;
+
+    for (const auto &s : sortstd)
+    {
+        cout << "| " << left << setw(widthr) << s.rollnum
+             << "| " << setw(widthn) << s.name;
+        for (int i = 0; i < 30; i++)
+        {
+            cout << "| " << setw(widthd) << s.attendance[i];
+        }
+        cout << " |\n";
+    }
+
+    cout<<"\n==========================================================================================================================================================================================\n";
+
+    sysclr();
+}
+
+void markspr(const vector<student> &students)
+{
+    int subch;
+    cout << "\n===================== DISPLAY MARKS OPTIONS =====================\n";
+    cout << "1. DISPLAY MARKS BY DAYS\n";
+    cout << "2. DISPLAY MARKS BY TOTAL ATTENDANCE\n";
+    cout << "Enter your choice: ";
+    cin >> subch;
+
+    const int widthr = 10;
+    const int widthn = 20;
+    const int markswidth = 10;
+    const int dayswidth = 15;
+
+    if (subch == 1)
+    {
+        int days;
+        cout << "Enter how many days' attendance to consider (1-30): ";
+        cin >> days;
+        if (days < 1 || days > 30)
+        {
+            cout << "Invalid day count!\n";
+            sysclr();
+            return;
+        }
+
+        cout << "\n====================== DISPLAY MARKS BY DAYS ====================\n\n";
+
+        cout << "| " << left << setw(widthr) << "ROLL NO"
+             << "| " << setw(widthn) << "NAME"
+             << "| " << setw(markswidth) << "MARKS"
+             << "| " << setw(dayswidth) << "DAYS PRESENT" << " |\n";
+
+        cout << string(widthr + widthn + markswidth + dayswidth + 10, '-') << endl;
+
+        for (const auto &s : students)
+        {
+            int present_days = s.present(days);
+            double percentage = (double)present_days / days;
+            double mark = percentage * 10.0;
+            cout << "| " << left << setw(widthr) << s.rollnum
+                 << "| " << setw(widthn) << s.name
+                 << "| " << fixed << setprecision(2) << setw(markswidth) << mark
+                 << "| " << setw(dayswidth) << present_days << " |\n";
+        }
+
+        cout << "\n=================================================================\n";
+;
+    }
+    else if (subch == 2)
+    {
+        int total_days;
+        cout << "Enter total number of days (1-30): ";
+        cin >> total_days;
+        if (total_days < 1 || total_days > 30)
+        {
+            cout << "Invalid total days!\n";
+            sysclr();
+            return;
+        }
+
+        cout <<"\n================ DISPLAY MARKS BY TOTAL ATTENDANCE ==============\n\n";
+;
+        cout << "| " << left << setw(widthr) << "ROLL NO"
+             << "| " << setw(widthn) << "NAME"
+             << "| " << setw(markswidth) << "MARKS"
+             << "| " << setw(dayswidth) << "DAYS PRESENT" << " |\n";
+
+        cout << string(widthr + widthn + markswidth + dayswidth + 10, '-') << endl;
+
+        for (const auto &s : students)
+        {
+            int present_days = s.present(30);
+            double percentage = (double)present_days / total_days * 100;
+            int mark;
+
+            if (percentage >= 90)
+                mark = 10;
+            else if (percentage >= 80)
+                mark = 9;
+            else if (percentage >= 70)
+                mark = 8;
+            else if (percentage >= 60)
+                mark = 7;
+            else if (percentage >= 50)
+                mark = 6;
+            else if (percentage >= 40)
+                mark = 5;
+            else
+                mark = 0;
+
+            cout << "| " << left << setw(widthr) << s.rollnum
+                 << "| " << setw(widthn) << s.name
+                 << "| " << setw(markswidth) << mark
+                 << "| " << setw(dayswidth) << present_days << " |\n";
+        }
+
+        cout << "\n=================================================================\n";
+    }
+    else
+    {
+        cout << "Invalid choice!\n";
+    }
+
+    sysclr();
+}
+
+void markdayattendence(vector<student> &students)
+{
+    int count;
+    cout << "How many students were present today (Day " << today << "): ";
+    cin >> count;
+
+    vector<int> pres_roll(count);
+    cout << "Enter roll numbers of present students:\n";
+    for (int i = 0; i < count; ++i)
+    {
+        cin >> pres_roll[i];
+    }
+
+    unordered_set<int> present(pres_roll.begin(), pres_roll.end());
+    for (auto &s : students)
+    {
+        s.mark_attendance(today, present.count(s.rollnum) ? "P" : "A");
+    }
+
+    cout << "Attendance for Day " << today << " updated!\n";
+    sysclr();
+}
+
+int32_t main()
+{
+    
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    today = ltm->tm_mday;    // For  current time and date
+    month = gmonthname(ltm->tm_mon + 1);
+    cout << endl;
+    cout << endl;
+    cout << "           اعوذ بالله من الشيطان الرجيم" << endl;
+    cout << "              بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ    " << endl;
+    cout << endl;
+    cout<<endl;
+    cout<<"Welcome To NI MARUF's Attendence Management System !!!"<<endl;
+    cout<<endl;
+    cout<<endl;
+    cout << "\nDate: " << ltm->tm_mday << "/" << ltm->tm_mon + 1 << "/" << ltm->tm_year + 1900;
+    cout << " | Time: " << ltm->tm_hour << ":" << ltm->tm_min << ":" << ltm->tm_sec << endl; // Print current time and date
+
+    vector<student> students;
+    loaddata(students);
+
+    int choice;
+    while (true)
+    {
+
+        cout << "\nMonth: " << month << " | Day: " << today << endl;
+        cout << "1. Add Student\n";
+        cout << "2. Remove Student\n";
+        cout << "3. Mark Attendance (Single Entry)\n";
+        cout << "4. Mark Attendance (Today's All)\n";
+        cout << "5. Display Attendance\n";
+        cout << "6. Display Marks\n";
+        cout << "7. Save Data\n";
+        cout << "8. Clear All Data\n";
+        cout << "9. Exit\n";
+        cout << "Enter your choice: ";
+
+        if (!(cin >> choice))
+        {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Invalid input! Please enter a number.\n";
+            continue;
+        }
+
+        if (choice == 1)
+        {
+            string name;
+            int rollnum;
+            cout << "Enter student's name: ";
+            cin.ignore();
+            getline(cin, name);
+            cout << "Enter student's roll number: ";
+            cin >> rollnum;
+            addstudent(students, name, rollnum);
+        }
+        else if (choice == 2)
+        {
+            int rollnum;
+            cout << "Enter roll number to remove: ";
+            cin >> rollnum;
+            studentdel(students, rollnum);
+        }
+        else if (choice == 3)
+        {
+            int roll, present,date;
+            cout << "Enter roll number: ";
+            cin >> roll;
+            cout << "Enter date: ";
+            cin>>date;
+            cout << "Enter attendance (1 = Present, 0 = Absent): ";
+            cin >> present;
+            bool found = false;
+            for (auto &s : students)
+            {
+                if (s.rollnum == roll)
+                {
+                    s.mark_attendance(date, present ? "P" : "A");
+                    cout << "Attendance marked!\n";
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                cout << "Student not found!\n";
+            }
+            sysclr();
+        }
+        else if (choice == 4)
+        {
+            markdayattendence(students);
+        }
+        else if (choice == 5)
+        {
+            printattendence(students);
+        }
+        else if (choice == 6)
+        {
+            markspr(students);
+        }
+        else if (choice == 7)
+        {
+            savedata(students);
+        }
+        else if (choice == 8)
+        {
+            deletedata(students);
+        }
+        else if (choice == 9)
+        {
+            cout << "Exiting...\n";
+            break;
+        }
+        else
+        {
+            cout << "Invalid choice! Please try again.\n";
+        }
+    }
+
+    return 0;
+
+}
+
+
+
+
+// /Users/nimaruf/Downloads/Bill.csv
+// /Users/nimaruf/Downloads/product.csv\ 
